@@ -6,6 +6,7 @@ from typing import Any, Union
 
 from .errors import CalculatorError
 
+# High precision to keep Decimal math stable for typical calculator use.
 getcontext().prec = 28
 
 NumberLike = Union[int, float, str, Decimal]

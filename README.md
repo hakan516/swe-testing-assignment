@@ -6,7 +6,6 @@ Real-Calculator is a small, testable calculator application that supports additi
 
 - Python 3.10+ 
 
-
 ## Setup
 ```bash
 python -m venv .venv
@@ -27,3 +26,17 @@ Examples:
 - `8` `/` `0` `=` → shows `Error`
 
 Quit with `q`.
+
+## How to run tests
+
+```bash
+pytest
+```
+
+## Testing framework research: Pytest vs Unittest
+
+Python ships with unittest, which is a major advantage in environments that restrict dependencies. It provides a familiar structure with test cases via a built-in test runner. However, it tends to be more verbose, and mocking/fixtures often require more boilerplate to keep tests readable as the project grows.
+
+Pytest is a widely used framework that focuses on concise, readable tests. Its assert produces clear failure messages without extra APIs, and its system makes test setup powerful. In practice, pytest often provides a lower test maintenance cost because tests stay short and expressive while still supporting advanced needs.
+
+For real-calculator, pytest was chosen to keep the unit tests and integration tests readable while still supporting clean test organization and detailed assertions.
