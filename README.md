@@ -1,7 +1,6 @@
 # Real-Calculator
 
-Real-Calculator is a small, testable calculator application that supports addition, subtraction, multiplication, division, and a reset operation.  
-
+Real-Calculator is a small calculator application that supports addition, subtraction, multiplication, division, and a reset operation. Order of operations are not taken into account.
 ## Requirements
 
 - Python 3.10+ 
@@ -18,6 +17,19 @@ pip install -r requirements.txt
 python -m real_calculator
 ```
 **_The inputs are expected to be entered one by one OR with spaces in between, including numbers with multiple digits_**
+### Supported inputs
+| Input | Description |
+|---|---|
+0-9 | Digits |
+. | Decimal point |
+\+ | Add|
+\- | Substract|
+\* | Multiply
+/ | Divide
+sqrt| Squareroot
+**=** | **Answer of the operation**
+C | clear
+
 
 Examples:
 
@@ -30,7 +42,7 @@ Quit with `q`.
 ## How to run tests
 
 ```bash
-pytest
+python -m pytest
 ```
 
 ## Testing framework research: Pytest vs Unittest
