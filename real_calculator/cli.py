@@ -6,7 +6,7 @@ from .controller import realcalculatorController
 def main() -> None:
     ctl = realcalculatorController()
     print("real-calculator (type calculator keys separated by spaces; 'q' to quit)")
-    print("Supported keys: 0-9  .  +  -  *  /  =  C")
+    print("Supported keys: 0-9  .  +  -  *  /  sqrt  =  C")
     print(f"Display: {ctl.display}")
 
     while True:

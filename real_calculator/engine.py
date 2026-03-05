@@ -88,3 +88,12 @@ class CalculatorEngine:
         if divisor == 0:
             raise CalculatorError("Division by zero")
         return to_decimal(a) / divisor
+
+
+    @staticmethod
+    def sqrt(x: NumberLike) -> Decimal:
+        value = to_decimal(x)
+        if value < 0:
+            raise CalculatorError("Square root of negative number")
+        # Decimal.sqrt() uses the current context precision.
+        return value.sqrt()

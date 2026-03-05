@@ -23,3 +23,15 @@ def test_division_by_zero_shows_error():
     assert press_seq(ctl, ["8", "/", "0", "="]) == "Error"
     # Next input should start fresh
     assert press_seq(ctl, ["1", "+", "1", "="]) == "2"
+
+
+def test_sqrt_on_display_then_addition():
+    ctl = realcalculatorController()
+    assert press_seq(ctl, ["9", "sqrt"]) == "3"
+    assert press_seq(ctl, ["+", "1", "="]) == "4"
+
+
+def test_sqrt_of_negative_shows_error():
+    ctl = realcalculatorController()
+    assert press_seq(ctl, ["0", "-", "9", "="]) == "-9"
+    assert press_seq(ctl, ["sqrt"]) == "Error"

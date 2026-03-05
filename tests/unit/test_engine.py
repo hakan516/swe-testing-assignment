@@ -44,3 +44,18 @@ def test_format_decimal_normalizes():
     assert format_decimal(Decimal("8.000")) == "8"
     assert format_decimal(Decimal("-0.0")) == "0"
     assert format_decimal(Decimal("3.1400")) == "3.14"
+
+
+def test_sqrt_perfect_square():
+    assert CalculatorEngine.sqrt(9) == Decimal(3)
+
+
+def test_sqrt_non_perfect_square_matches_decimal_context():
+    # Compare against Decimal's own sqrt under the same context/precision.
+    expected = Decimal("2").sqrt()
+    assert CalculatorEngine.sqrt("2") == expected
+
+
+def test_sqrt_negative_raises():
+    with pytest.raises(CalculatorError, match="Square root of negative number"):
+        CalculatorEngine.sqrt(-1)

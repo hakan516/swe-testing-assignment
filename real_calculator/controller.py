@@ -57,6 +57,10 @@ class realcalculatorController:
             self._press_equals()
             return self.display
 
+        if key.lower() in {"sqrt"}:
+            self._press_sqrt()
+            return self.display
+
         raise ValueError(f"Unsupported key: {key!r}")
 
     def _press_digit(self, digit: str) -> None:
@@ -99,6 +103,22 @@ class realcalculatorController:
         self._accumulator = result
         self._pending_op = None
         self._new_input = True
+
+
+    def _press_sqrt(self) -> None:
+        """Apply square root to the current display (unary operator)."""
+        try:
+            current = to_decimal(self.display)
+            result = CalculatorEngine.sqrt(current)
+            self.display = format_decimal(result)
+            # After a unary op, treat the display as a completed value.
+            self._new_input = True
+        except CalculatorError:
+            self.display = "Error"
+            self._error = True
+            self._accumulator = None
+            self._pending_op = None
+            self._new_input = True
 
     def _apply(self, op: str, a: Optional[Decimal], b: Decimal) -> Decimal:
         if a is None:
